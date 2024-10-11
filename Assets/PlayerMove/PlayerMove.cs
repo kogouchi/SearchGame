@@ -16,6 +16,7 @@ public class PlayerMove : MonoBehaviour
     public GameObject planet;//球体の取得
     public float accelerationScale = 5.0f;//加速度の大きさ
     public float speed = 0.05f;//移動スピード
+    public float vartical;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,14 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        var horizontal = Input.GetAxis("Horizontal");
+        vartical = Input.GetAxis("Vertical");
+
+        if (Mathf.Abs(horizontal) > 0.1f)
+        {
+            transform.Rotate(0, horizontal * speed * Time.deltaTime, 0);
+        }
+
         Move();//移動処理
     }
 
@@ -38,6 +47,11 @@ public class PlayerMove : MonoBehaviour
 
         //加速度与える
         rb.AddForce(accelerationScale * direction, ForceMode.Acceleration);
+
+        if(rb.velocity.magnitude < speed)
+        {
+            rb.AddForce(transform.forward * vartical * speed);
+        }
     }
 
     private void Move()
