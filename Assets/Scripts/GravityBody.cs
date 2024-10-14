@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Unity上ですること Player
+/// 【Rigidbody】 Use Gravity チェックオフ
+/// 【Rigidbody】 Constraints Freeze Rotation チェックオン
+/// </summary>
 public class GravityBody : MonoBehaviour
 {
-    public GravityAttractor attractor;
+    public GravityAttractor attractor;//GravityAttractor.csを参照
     private Transform mytransform;
     private Rigidbody rb;
 
@@ -12,14 +17,13 @@ public class GravityBody : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        //rb.constraints = RigidbodyConstraints.FreezeRotation;
-        //rb.useGravity = false;
         mytransform = transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        attractor.Attract(mytransform, rb);
+        //GravityAttractor.csのAttract関数処理
+        attractor.Attract(mytransform, rb);//transformとrigidbodyの情報を渡す
     }
 }
