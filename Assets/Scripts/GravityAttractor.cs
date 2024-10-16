@@ -10,7 +10,7 @@ using UnityEngine;
 /// </summary>
 public class GravityAttractor : MonoBehaviour
 {
-    public float gravity = -10;//加速度の大きさ
+    public float gravity = -50;//加速度の大きさ
 
     #region 参考サイト
     // 万有引力の法則を用いたもの
