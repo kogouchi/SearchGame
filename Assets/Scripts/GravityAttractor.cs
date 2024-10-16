@@ -10,7 +10,12 @@ using UnityEngine;
 /// </summary>
 public class GravityAttractor : MonoBehaviour
 {
-    public float gravity = -10;//加速度の大きさ
+    public float gravity = -50;//加速度の大きさ
+
+    #region 参考サイト
+    // 万有引力の法則を用いたもの
+    // https://ftvoid.com/blog/post/738
+    #endregion
 
     // Start is called before the first frame update
     void Start()
@@ -27,12 +32,16 @@ public class GravityAttractor : MonoBehaviour
     //GravityBody.csへ参照させる関数
     public void Attract(Transform body, Rigidbody rb)
     {
-        //Playerに向かう向きを取得
+        //万有引力の法則を用いたもの-----------------
+        //→このスクリプトに当てられたオブジェクトに重力を持たせる
+
+        //Playerに向かう向きを取得→そのためPlayerBodyのデータを引数で取得
         Vector3 gravityup = (body.position - transform.position).normalized;//.normalizedでベクトルの正規化
         Vector3 bodyup = body.up;
 
         //加速度を与える
         rb.AddForce(gravityup * gravity);
+        //-------------------------------------------
 
         //進行方向を向く回転の計算
         //Quaternion.FromToRotation(開始方向、終了方向)
