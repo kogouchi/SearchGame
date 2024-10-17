@@ -9,7 +9,7 @@ using UnityEngine;
 /// 【Rigidbody】 Use Gravity チェックオフ
 /// 【Rigidbody】 Constraints Freeze Rotation チェックオン
 /// </summary>
-public class PlayerBody : MonoBehaviour
+public class GravityBody : MonoBehaviour
 {
     public GravityAttractor attractor;//GravityAttractor.csを参照
     public GameObject item;//アイテムオブジェクトの取得
