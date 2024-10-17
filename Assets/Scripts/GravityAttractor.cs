@@ -36,9 +36,10 @@ public class GravityAttractor : MonoBehaviour
         //→このスクリプトに当てられたオブジェクトに重力を持たせる
 
         //Playerに向かう向きを取得→そのためPlayerBodyのデータを引数で取得
-        Vector3 gravityup = (body.position - transform.position).normalized;//.normalizedでベクトルの正規化
+        Vector3 gravityup = (body.position - this.transform.position).normalized;//.normalizedでベクトルの正規化
         Vector3 bodyup = body.up;
 
+        //if (Input.GetAxisRaw("Horizontal") != 0)
         //加速度を与える
         rb.AddForce(gravityup * gravity);
         //-------------------------------------------
