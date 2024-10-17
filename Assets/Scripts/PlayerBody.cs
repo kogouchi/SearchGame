@@ -31,10 +31,16 @@ public class PlayerBody : MonoBehaviour
 
     void FixedUpdate()
     {
+        //rb.constraints = RigidbodyConstraints.FreezeAll;//位置座標、回転座標を固定
+
         //何らかのキーが押された場合(キーを押していない時に勝手に動いてしまうため)
-        if(Input.anyKey)
-        //GravityAttractor.csのAttract関数処理
-        attractor.Attract(mytransform, rb);//transformとrigidbodyの情報を渡す
+        if (Input.anyKey)
+        {
+            //rb.constraints = RigidbodyConstraints.None;
+            //rb.constraints = RigidbodyConstraints.FreezeRotation;
+            //GravityAttractor.csのAttract関数処理
+            attractor.Attract(mytransform, rb);//transformとrigidbodyの情報を渡す
+        }
     }
 
     //オブジェクト同士が触れた場合
