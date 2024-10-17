@@ -32,7 +32,7 @@ public class PlayerBody : MonoBehaviour
     void FixedUpdate()
     {
         //何らかのキーが押された場合(キーを押していない時に勝手に動いてしまうため)
-        if(Input.anyKey)
+        if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
         //GravityAttractor.csのAttract関数処理
         attractor.Attract(mytransform, rb);//transformとrigidbodyの情報を渡す
     }
